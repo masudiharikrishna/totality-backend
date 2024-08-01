@@ -8,13 +8,15 @@ const app = express();
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URL, { 
-  serverSelectionTimeoutMS: 30000
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000 // Increase timeout to 30 seconds
 })
 .then(() => {
   console.log('Connected to MongoDB');
 })
 .catch((error) => {
-  console.error('Error connecting to MongoDB:', error);
+  console.error('Error connecting to MongoDB:', error.message);
 });
 
 app.use('/api', propertyRoutes);
