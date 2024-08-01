@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const propertyRoutes = require('./routes/propertyRoutes');
+const propertyRoutes = require("./routes/propertyroutes");
 require('dotenv').config();
 
 const app = express();
@@ -10,7 +10,7 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URL, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 30000 // Increase timeout to 30 seconds
+  serverSelectionTimeoutMS: 30000
 })
 .then(() => {
   console.log('Connected to MongoDB');
